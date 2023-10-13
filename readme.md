@@ -1,7 +1,7 @@
 # quick-fold-nf
 
 ![](https://img.shields.io/badge/current_version-0.0.0-blue)
-![](https://github.com/stracquadaniolab/quick-fold-nf/workflows/build/badge.svg)
+![](https://github.com/stracquadaniolab/quick-fold-nf/workflows/test/badge.svg)
 ## Overview
 A Nextflow workflow for protein structure prediction.
 
