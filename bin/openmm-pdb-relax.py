@@ -97,7 +97,7 @@ def main():
     )
 
     # minimize energy
-    simulation.minimizeEnergy(maxIterations = arguments['--max-iterations'])
+    simulation.minimizeEnergy()
 
     # record final energy state
     final_state = simulation.context.getState(getEnergy=True, getPositions=True)
