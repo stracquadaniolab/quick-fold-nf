@@ -7,10 +7,10 @@ A Nextflow workflow for protein structure prediction.
 
 ## Configuration
 
-- param1: this is the parameter description (default: "hello")
-- param2: this is the parameter description (default: "world")
-- ...
-- paramN: this is the parameter description (default: "flow")
+- `inputFile`: FASTA file with one or more sequences (required)
+- `resultsDir`: directory where to store the results (default: results/yyyy.MM.dd-HH.mm.ss-quick-fold)
+- `esmfold.args`: options passed to ESMFold  (default: "--num-recycles 4 --chunk-size 16")
+- `openmm.pdb.relax.args`: options passed to OpenMM PDB relaxation (default: "--fix-pdb")
 
 ## Running the workflow
 
@@ -28,9 +28,8 @@ nextflow run stracquadaniolab/quick-fold-nf
 
 ## Results
 
-- `results/analysis.txt`: file with the analysis results.
-- `results/tuning.txt`: file with the parameter tuning.
-- ...
+- `$resultsDir/predicted/<seqid>.pdb`: PDB file for each sequence in input as predicted by ESMFold.
+- `$resultsDir/relaxed/<seqid>.pdb`: PDB files after energy minimization.
 
 ## Authors
 
