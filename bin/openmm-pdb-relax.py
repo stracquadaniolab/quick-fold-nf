@@ -1,10 +1,10 @@
 #!/usr/bin/env python
-"""mm-pdb-relax
+"""openmm-pdb-relax
 
 Relax protein structures predicted by ESMfold using Amber14
 
 Usage:
-  mm-pdb-relax.py [--fix-pdb] [--no-restraints] [--max-iterations=<iter_max>] <in_pdb> <out_pdb>
+  openmm-pdb-relax.py [--fix-pdb] [--no-restraints] [--max-iterations=<iter_max>] <in_pdb> <out_pdb>
 
 Options:
   --fix-pdb                     Fix PDB before. 
@@ -79,7 +79,7 @@ def setup_simulation(pdb, system):
 
 
 def main():
-    arguments = docopt(__doc__, version='mm-pdb-relax.py')
+    arguments = docopt(__doc__, version='openmm-pdb-relax.py')
 
     # read pdb file
     pdb = get_pdb(arguments['<in_pdb>'], arguments['--fix-pdb'])

@@ -8,8 +8,9 @@ process ESMFOLD_INFERENCE {
 
     shell:
     """
-    esmfold-inference.py -i protein.fasta -o . ${params.esmfold.args}\ 
+    esmfold-inference.py -i protein.fasta -o . ${params.esmfold.args}
     """
+    
     stub:
     """
     touch protein{1,2}.pdb
