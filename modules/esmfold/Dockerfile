@@ -1,5 +1,4 @@
-## base container
-FROM pytorch/pytorch:1.12.1-cuda11.3-cudnn8-devel as base_container
+FROM pytorch/pytorch:1.12.1-cuda11.3-cudnn8-devel
 
 RUN apt-get update \
     && apt-get install --yes rename procps curl git \
