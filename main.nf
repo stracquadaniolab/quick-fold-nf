@@ -1,4 +1,4 @@
-include { ESMFOLD_INFERENCE } from './modules/esmfold'
+include { ESMFOLD_INFERENCE; ESMFOLD_SCORE_LOGLIK } from './modules/esmfold'
 include { OPENMM_PDB_RELAX } from './modules/openmm'
 
 // printing message of the day
@@ -58,11 +58,16 @@ workflow QUICK_FOLD {
     | ESMFOLD_INFERENCE \
     | flatten \
     | map{ it -> tuple(it.simpleName, it) } \
-    | OPENMM_PDB_RELAX
+    | OPENMM_PDB_RELAX 
+}
+
+workflow QUICK_FOLD_SCORE {
+    TELEMETRY()
+    channel.fromPath("${params.inputFile}") \
+    | ESMFOLD_SCORE_LOGLIK
 }
 
 workflow{
-
     QUICK_FOLD()
-
+    QUICK_FOLD_SCORE()
 }
