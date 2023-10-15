@@ -69,5 +69,5 @@ workflow QUICK_FOLD_SCORE {
 
 workflow{
     QUICK_FOLD()
-    QUICK_FOLD_SCORE()
+    // QUICK_FOLD_SCORE()
 }
