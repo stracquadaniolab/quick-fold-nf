@@ -3,12 +3,12 @@ process ESMIF_SCORE_LOGLIK {
 
     input: 
         path('protein.fasta')
+        path('ref.pdb')
     output:
         path("report-score-loglik.csv")
 
     shell:
     """
-    curl https://files.rcsb.org/download/${params.esmfold.score.wildtype}.pdb -o ref.pdb && \
     esmfold-score-loglik.py ref.pdb protein.fasta --outpath report-score-loglik.csv
     """
     

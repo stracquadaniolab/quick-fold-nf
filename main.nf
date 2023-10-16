@@ -64,8 +64,8 @@ workflow QUICK_FOLD {
 
 workflow QUICK_FOLD_SCORE {
     TELEMETRY()
-    channel.fromPath("${params.inputFile}") \
-    | ESMIF_SCORE_LOGLIK
+    fasta_ch = channel.fromPath("${params.inputFile}")
+    ESMIF_SCORE_LOGLIK(fasta_ch, file("${params.esmif.score.wildtype}"))
 }
 
 workflow{
