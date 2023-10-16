@@ -1,4 +1,5 @@
-include { ESMFOLD_INFERENCE; ESMFOLD_SCORE_LOGLIK } from './modules/esmfold'
+include { ESMFOLD_INFERENCE } from './modules/esmfold'
+include { ESMIF_SCORE_LOGLIK } from './modules/esmif'
 include { OPENMM_PDB_RELAX } from './modules/openmm'
 
 // printing message of the day
@@ -64,10 +65,10 @@ workflow QUICK_FOLD {
 workflow QUICK_FOLD_SCORE {
     TELEMETRY()
     channel.fromPath("${params.inputFile}") \
-    | ESMFOLD_SCORE_LOGLIK
+    | ESMIF_SCORE_LOGLIK
 }
 
 workflow{
     QUICK_FOLD()
-    // QUICK_FOLD_SCORE()
+    QUICK_FOLD_SCORE()
 }
