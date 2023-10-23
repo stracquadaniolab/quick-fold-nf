@@ -53,6 +53,7 @@ process TELEMETRY {
     """
 }
 
+
 workflow QUICK_FOLD {
     TELEMETRY()
     channel.fromPath("${params.inputFile}") \
@@ -65,7 +66,9 @@ workflow QUICK_FOLD {
 workflow QUICK_FOLD_SCORE {
     TELEMETRY()
     fasta_ch = channel.fromPath("${params.inputFile}")
-    ESMIF_SCORE_LOGLIK(fasta_ch, file("${params.esmif.score.wildtype}"))
+    pdb_ch = channel.fromPath("${params.esmif.score.wildtype}").map { it -> tuple(it.simpleName, it)}
+    OPENMM_PDB_RELAX(pdb_ch)
+    ESMIF_SCORE_LOGLIK(fasta_ch, OPENMM_PDB_RELAX.out.map{ it -> it[1] })
 }
 
 workflow{

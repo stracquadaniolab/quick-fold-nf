@@ -1,5 +1,6 @@
 process OPENMM_PDB_RELAX {
     publishDir "${params.resultsDir}/relaxed/", pattern: "protein_relaxed.*", mode: 'copy', saveAs: { filename -> "${protein_id}.pdb" }
+    publishDir "${params.resultsDir}/predicted/", pattern: "protein_predicted.*", mode: 'copy', saveAs: { filename -> "${protein_id}.pdb" }
 
     input: 
         tuple val(protein_id), path('protein_predicted.pdb')
